@@ -1,11 +1,4 @@
 import React, { Component } from 'react';
-import { Container } from "reactstrap";
-import {
-  BrowserRouter as Router,
-  Link,
-  NavLink,
-  Redirect
-} from "react-router-dom";
 
 class Studash extends Component {
   state = { stu_name: "", stu_id: "", gender:"",email:"",dob:"",

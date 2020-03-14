@@ -1,11 +1,4 @@
 import React, { Component } from 'react';
-import { Container } from "reactstrap";
-import {
-  BrowserRouter as Router,
-  Link,
-  NavLink,
-  Redirect
-} from "react-router-dom";
 
 class Facpass extends Component {
     state = {count:1,isToggleOn: [],status : "APPROVE", listUI : []};

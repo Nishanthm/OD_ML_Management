@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import './stulogincss.css'
-import {
-  BrowserRouter as Router,
-  Link,
-  NavLink,
-  Redirect
-} from "react-router-dom";
+import './stulogincss.css';
 
 class Stulogin extends Component {
   state = { uid: "", pwd: "",status:""};

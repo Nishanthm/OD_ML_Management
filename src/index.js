@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.css';
 import * as serviceWorker from './serviceWorker';
 import Stulogin from './components/stulogin.jsx';
 import Studash from './components/studash.jsx';
@@ -12,8 +11,7 @@ import Facdash from './components/facdash.jsx';
 import Applypass from './components/applypass.jsx';
 import Passhist from './components/passhist.jsx';
 import Facpass from './components/facpass.jsx';
-import 'mdbreact/dist/css/mdb.css';
-import './login.css'
+import './login.css';
 //import Requestroombooking from './components/requestroombooking.jsx';
 
 ReactDOM.render(

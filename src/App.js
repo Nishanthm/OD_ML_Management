@@ -1,39 +1,12 @@
 import React, { Component } from 'react';
-import Logo from './components/Logo.png';
-import { BrowserRouter as Router, NavLink } from 'react-router-dom';
-import { MDBAnimation } from 'mdbreact';
+
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { facultyname: 'facultyname', fid: 0 };
 	}
 
-	facultytimetable = (event) => {
-		window.history.pushState(null, 'facultytimetable', '/facultytimetable');
-		window.location.reload();
-	};
-
-	roomtimetable = (event) => {
-		window.history.pushState(null, 'roomtimetable', '/roomtimetable');
-		window.location.reload();
-	};
-
-	freeslotfaculty = (event) => {
-		window.history.pushState(null, 'freeslotfaculty', '/freeslotfaculty');
-		window.location.reload();
-	};
-
-	requestroombooking = (event) => {
-		window.history.pushState(null, 'requestroombooking', '/requestroombooking');
-		window.location.reload();
-	};
-
-	cancelclass=(event)=>
-	{
-		window.history.pushState(null, 'cancelclass', '/cancelclass');
-		window.location.reload();
-	};
-
+	
 	initial = () => {
 		let value = this;
 		sessionStorage.setItem('fid', 400);
