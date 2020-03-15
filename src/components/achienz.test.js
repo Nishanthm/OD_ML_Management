@@ -22,7 +22,7 @@ describe('Renders Fac Dashboard Without crashing', () => {
       window.location = { pushState: assignMock,reload:jest.fn() };
     window.reload= jest.fn()
       wrapper.setState(state1)     
-      expect(wrapper.state("gender")).toEqual('male')
+      expect(wrapper.state("gender")).toEqual('Male')
     });
 });
 
@@ -55,7 +55,7 @@ describe('Renders  Without crashing', () => {
       window.location = { pushState: assignMock,reload:jest.fn() };
     window.reload= jest.fn()
     wrapper.setState(state1)     
-      expect(wrapper.state('status')).toEqual('APPROVE')
+      expect(wrapper.state('status')).toEqual('')
     });
 });
 
@@ -111,7 +111,7 @@ describe('Test cases for Student Achievements Without crashing', () => {
       const jsdomAlert = window.alert;  
       window.alert = () => {};
       var state1={count:1};
-
+      delete window.location;
       wrapper.setState(state1)
       window.location = { pushState: jest.fn(),reload:jest.fn() };
       window.reload= jest.fn()
@@ -140,7 +140,7 @@ it('Dashboard loading correctly', () => {
   mobile:"818181",addr:"test",school:"HSJS",percent:"34",branch:"ECE",sec:"B",cur_sem:"6",cgpa:"9.20"}
 
   wrapper.setState(state1)
- 
+  delete window.location;
   window.location = { pushState: jest.fn(),reload:jest.fn() };
   window.reload= jest.fn()
   expect(wrapper.state('stu_name')).toEqual('test1')
@@ -164,7 +164,7 @@ describe('Renders Dashboard Without crashing', () => {
       mobile:"818181",addr:"test",school:"HSJS",percent:"34",branch:"ECE",sec:"B",cur_sem:"6",cgpa:"9.20"}
     
       wrapper.setState(state1)
-     
+      delete window.location;
       window.location = { pushState: jest.fn(),reload:jest.fn() };
       window.reload= jest.fn()
       expect(wrapper.state('stu_name')).toEqual('test1')
