@@ -1,7 +1,12 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 var cors = require('cors');
 const app = express();
 const port = 8000;
+
+app.use(cors())
+app.use(bodyParser.json());
+
 const nodemailer = require('nodemailer');
 var transport = nodemailer.createTransport({
 	host: "smtp.mailtrap.io",
@@ -25,13 +30,12 @@ var htmlfail='<h1>You Pass has been cancelled!</h1><p>contact class advisor!!</p
 
 
 const mysql = require('mysql');
-var bodyParser = require('body-parser');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 var mysqlConnection = mysql.createConnection({
-	host: 'software.cbesvpot2wyw.us-east-1.rds.amazonaws.com',
+	host: 'schema.cbesvpot2wyw.us-east-1.rds.amazonaws.com',
 	user: 'admin',
 	password: 'password',
 	database: 'software'
@@ -42,11 +46,11 @@ mysqlConnection.connect((err) => {
 	else console.log('Unsuccessful \n Error : ' + JSON.stringify(err, undefined, 2));
 });
 
-app.post("/login", cors(), (req, res) => {
+app.post("/login", async (req, res) => {
 	
     // res.writeHead(200, { "Content-Type": "text/html" });
     // res.set('Content-Type', 'text/html');
-    
+    console.log(req.body)
     var uname = req.body.uname;
     var pwd = req.body.pwd;
     
@@ -72,7 +76,7 @@ app.post("/login", cors(), (req, res) => {
 					mysqlConnection.query('select "fail" as su from dual',function (error, results, fields) {
 						console.log("hi2");
 						console.log(results[0].su);
-						res.send(results);
+						res.JSON({msg:"Fail"});
 						res.end();
 					});
                    

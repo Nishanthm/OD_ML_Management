@@ -13,7 +13,7 @@ import Applypass from './components/applypass.jsx';
 import Passhist from './components/passhist.jsx';
 import Facpass from './components/facpass.jsx';
 import './login.css';
-import achi from './components/achi';
+import achi from './components/achi.jsx';
 //import Requestroombooking from './components/requestroombooking.jsx';
 
 ReactDOM.render(

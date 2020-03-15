@@ -2,49 +2,79 @@ import React, { Component } from 'react';
 import './stulogincss.css';
 
 class Stulogin extends Component {
-  state = { uid: "", pwd: "",status:""};
+  state = { uid: "", pwd: "",status:"",error:{val:false,msg:""}};
 
   studentlogin = event => {
     event.preventDefault();
+    
     var value=this;
 
-    var formdata= new FormData(document.getElementById("custrm"));
-    var data= new URLSearchParams();
-    for (var pair of formdata) {
-      data.append(pair[0], pair[1])
+    if(this.state.uname==''||this.state.pwd=='')
+    {
+      alert('Enter something!')
+      value.setState({error:{val:true,msg:"Enter Something!"}}) 
+      
     }
+    // var formdata= new FormData(document.getElementById("custrm"));
+    // var data= new URLSearchParams();
+    // for (var pair of formdata) {
+    //   data.append(pair[0], pair[1])
+    // }
     
+    // console.log(this.state)
     fetch('http://localhost:8000/login', {
       method: 'post',
-      body: data
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        uname:this.state.uname,
+        pwd:this.state.pwd
+      })
     }).then(function (response) {
+      
       return response.json();
 
     }).then(function (json) {
-      value.setState({ status: json[0].su })
-      if(value.state.status==="fail")
+      // console.log(json)
+      
+      value.setState({ status: json[0].su },function(){console.log(this.Trigger())})
+    })
+     
+  };
+  
+  Trigger =()=>{
+  const value=this
+    if(this.state.status==="fail")
+    {
+      
+      // console.log("HE1RE")
+      alert('Incorrect username or password')
+      this.setState({error:{val:true,msg:"Wrong User or Pass"}})
+    }
+    else
+    {
+      
+      value.setState({error:{val:false,msg:""}})
+      sessionStorage.setItem('uname', value.state.status);
+      if(value.state.status.startsWith('cb.en.t'))
       {
-        alert('Incorrect username or password')
+        window.history.pushState(null, "facdash", "/facdash");
+        window.location.reload();
       }
       else
       {
-        sessionStorage.setItem('uname', value.state.status);
-        if(value.state.status.startsWith('cb.en.t'))
-        {
-          window.history.pushState(null, "facdash", "/facdash");
-          window.location.reload();
-        }
-        else
-        {
-          window.history.pushState(null, "studash", "/studash");
-          window.location.reload();
-        }
-        
+        window.history.pushState(null, "studash", "/studash");
+        window.location.reload();
       }
-
       
-    })
+    }
+  }
+  onInputChange = event => {
+    // console.log(event.target.value)
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   };
+
 
 	render() {
 		return (
@@ -54,7 +84,7 @@ class Stulogin extends Component {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           {/* <link rel="stylesheet" type="text/css" href="./fonts/iconic/css/material-design-iconic-font.min.css"> */}
           {/* <link rel="stylesheet" type="text/css" href="./css/main.css"> */}
-         
+ 
           <div className="limiter">
             <div className="container-login100" style={{backgroundImage: 'url("https://static.toiimg.com/photo/60387019/.jpg")'}}>
               <div style={{background: 'transparent', float: 'left'}}>
@@ -71,16 +101,17 @@ class Stulogin extends Component {
                   <span className="login100-form-title p-b-34 p-t-27">
                     Log in
                   </span>
+                  {this.state.error.val&& <h7>{this.state.error.msg}</h7>}
                   <div className="wrap-input100 validate-input" data-validate="Enter username">
-                    <input className="input100" type="text" name="uname" placeholder="Username" required/>
+                    <input className="input100" type="text" name="uname" placeholder="Username" onChange={this.onInputChange} required/>
                     <span className="focus-input100" data-placeholder="" />
                   </div>
                   <div className="wrap-input100 validate-input" data-validate="Enter password">
-                    <input className="input100" type="password" name="pwd" placeholder="Password" required/>
+                    <input className="input100" type="password" name="pwd" placeholder="Password" onChange={this.onInputChange} required/>
                     <span className="focus-input100" data-placeholder="" />
                   </div>
                   <div className="container-login100-form-btn">
-                    <button className="login100-form-btn" onClick={this.studentlogin}>
+                    <button className="login100-form-btn" id="submit" onClick={this.studentlogin}>
                   Login
                     </button>
                     {/* <input type="submit"></input> */}
