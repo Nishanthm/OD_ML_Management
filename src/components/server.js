@@ -2,6 +2,28 @@ const express = require('express');
 var cors = require('cors');
 const app = express();
 const port = 8000;
+const nodemailer = require('nodemailer');
+var transport = nodemailer.createTransport({
+	host: "smtp.mailtrap.io",
+	port: 2525,
+	auth: {
+	  user: "80cfbd6356739a",
+	  pass: "3573621c27a984"
+	}
+  });
+var htmlpass='<h1>You Pass has been accepted!</h1><p>Happy journey!!</p>';
+var htmlfail='<h1>You Pass has been cancelled!</h1><p>contact class advisor!!</p>';
+  var message = {
+    from: 'elonmusk@tesla.com', // Sender address
+    to: 'to@email.com',         // List of recipients
+    subject: 'Regarding PASS request', // Subject line
+    html: '<h1>You Pass has been accepted!</h1><p>Happy journey!!</p>'
+};
+
+
+
+
+
 const mysql = require('mysql');
 var bodyParser = require('body-parser');
 app.set('view engine', 'ejs');
@@ -218,12 +240,52 @@ app.post("/updatepass", function(req, res) {
 	var stat = req.body.pstat;
 	console.log(psd);
 	console.log(stat);
-	mysqlConnection.query(
-		'UPDATE pass SET passstatus = ? WHERE passid=?',
-		[stat,psd],
-		function(err, result, fields) {
-			res.end();
-		});
+	// transport.sendMail(message, function(err, info) {
+	// 	if (err) {
+	// 	  console.log(err)
+	// 	} else {
+	// 	  console.log(info);
+	// 	}
+	// });
+
+	mysqlConnection.query('select passwithfacid.passfrom as pf,faclogin.facemail as pfm,studlogin.studemail as psm from passwithfacid,faclogin,studlogin where passwithfacid.facultyid=faclogin.facusername and passwithfacid.studid=studlogin.studusername and passwithfacid.passid=?',
+			[psd],
+			function(err, sresult, fields) {
+				console.log("enter1");
+				message["from"]=sresult[0].pfm;
+				message["to"]=sresult[0].psm;
+				message["subject"]=sresult[0].pf;
+				if(stat>0)
+				{
+				message["html"]=htmlpass;}
+				else
+				{message["html"]=htmlfail;}
+				transport.sendMail(message, function(err, info) {
+					if (err) {
+					  console.log(err)
+					} else {
+					  console.log(info);
+					}
+				});
+
+
+
+				mysqlConnection.query(
+					'UPDATE pass SET passstatus = ? WHERE passid=?',
+					[stat,psd],
+					function(err, result, fields) {
+						res.end();
+					});
+			
+			});
+
+
+	// mysqlConnection.query(
+	// 	'UPDATE pass SET passstatus = ? WHERE passid=?',
+	// 	[stat,psd],
+	// 	function(err, result, fields) {
+	// 		res.end();
+	// 	});
 	});
 
 
