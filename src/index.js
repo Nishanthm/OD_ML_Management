@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import Stulogin from './components/stulogin.jsx';
 import Studash from './components/studash.jsx';
 import Facdash from './components/facdash.jsx';
+import studachi from './components/studachi.jsx';
 import Applypass from './components/applypass.jsx';
 import Passhist from './components/passhist.jsx';
 import Facpass from './components/facpass.jsx';
@@ -23,6 +24,7 @@ ReactDOM.render(
 				<Route exact path="/studash" component={Studash} />
 				<Route exact path="/facdash" component={Facdash} />
 				<Route exact path="/applypass" component={Applypass} />
+				<Route exact path="/studachi" component={studachi} />
 				<Route exact path="/passhist" component={Passhist} />
 				<Route exact path="/facpass" component={Facpass} />
 				<Route component={App} />

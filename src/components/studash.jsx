@@ -46,6 +46,7 @@ class Studash extends Component {
             <li><a href="">Dashboard</a></li>
             <li><a href="/applypass">Apply Pass</a></li>
             <li><a href="/passhist">View Pass History</a></li>
+            <li><a href="/studachi">View Achievement</a></li>
             <li><a href="#news">Update Account</a></li>
             <li style={{float: 'right'}}><a href="#news" className="exit">Signout</a></li>
           </ul>
