@@ -49,7 +49,7 @@ class App extends Component {
               <ul className="nav navbar-nav">
                 <li className="active"><a href="#">HOME <span className="sr-only">(current)</span></a></li>
                 {/* <li><a href="#">FACULTY LOGIN</a></li> */}
-                <li><a href="http://github.com/Surya-Prasad">CONTACT</a></li>
+                <li><a href="https://github.com/Nishanthm/OD_ML_Management">CONTACT</a></li>
                 <li><a href="http://intranet.cb.amrita.edu">DIRECT TO AUMS</a></li>
                 <li><a href="/stulogin" style={{float: 'right'}}>LOGIN</a></li>
               </ul>
