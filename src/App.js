@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import image from './components/logo.jpg'
 
 class App extends Component {
 	constructor(props) {
@@ -20,7 +21,8 @@ class App extends Component {
 		return (
 			<div>
         <title>
-          AWOL.
+
+         AWOL.
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="https://fonts.googleapis.com/css?family=Teko&display=swap" rel="stylesheet" />
@@ -64,7 +66,8 @@ class App extends Component {
         <div className="row">
           <div className="container-fluid">
             <div className="card">
-              <h2>About</h2>
+              
+              <img src={image} style={{margin:"-5px -20px"}} alt="Amrita Vishwa Vidyapeetham"/>
               <div className="fakeimg">
                 <img style={{margin: 'auto', width: '68rem'}} src="https://st3.depositphotos.com/2454953/12784/i/950/depositphotos_127848860-stock-photo-paid-sick-leave-word-cloud.jpg" />
                 <br />

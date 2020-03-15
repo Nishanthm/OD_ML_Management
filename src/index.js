@@ -29,7 +29,7 @@ ReactDOM.render(
 				<Route exact path="/passhist" component={Passhist} />
 				<Route exact path="/facpass" component={Facpass} />
 				<Route exact path="/achi" component={achi} />
-				<Route component={App} />
+			
 			</Switch>
 		</Router>
 	</React.Fragment>,

@@ -24,7 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test ./src/components/achienz.test.js",
     "eject": "react-scripts eject",
-    "coverage": "react-scripts test --coverage --env=jsdom --watchAll"
+    "coverage": "react-scripts test --coverage --env=jsdom --watchAll",
+    "server":"nodemon ./src/components/server.js"
   },
   "eslintConfig": {
     "extends": "react-app"

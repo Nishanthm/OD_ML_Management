@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,Fragment } from 'react';
 
 class Facpass extends Component {
     state = {count:1,isToggleOn: [],status : "APPROVE", listUI : []};
@@ -68,13 +68,14 @@ class Facpass extends Component {
   
       render() {
           return (
-        <div>
+        <div style={{margin:"2px"}}>
             <style dangeruslySetInnerHTML={{__html: "\n\nul {\n  list-style-type: none;\n  margin: -8px;\n  padding: 0;\n  overflow: hidden;\n  background-color: #333;\n}\n\nli {\n  padding:10px;\n  float: left;\n}\n\nli a{\n  display: inline-block;\n  color: white;\n  text-align: center;\n  padding: 14px 16px;\n  text-decoration: none;\n}\n\nli a:hover {\n  background-color: white;\n}\n\nli a.exit:hover{\n    background-color: red;\n}\n\ntable{\n  border: 3px solid black;\n  padding: 20px;\n  background-color: #eca6bb;\n  border-collapse: collapse;\n}\n\nth{\n  border: 3px solid black;\n  text-align: left;\n  padding: 15px;\n  font-size: 20px;\n  border-collapse: collapse;\n}\n\ntd {\n    text-align: left;\n  border: 3px solid black;\n  padding: 15px;\n  border-collapse: collapse;\n}\n\nth.heading{\n    text-align: center;\n    background-color: #b63a60;\n    font-size: 30px;\n}\n\n.personal_info{\n    margin-top: 50px;\n    margin-left: 300px;\n    margin-right: 300px;\n}\n\n.edu_info{\n    margin-top: 50px;\n    margin-bottom: 50px;\n    margin-left: 300px;\n    margin-right: 300px;\n}\n\n" }} />
             <div className="personal_info">
-              <table style={{width: '100%'}}>
-                <tbody><tr>
-                    <th colSpan={2} className="heading">Faculty Pass History</th>
-                  </tr>
+            <br></br>
+            <h1><center>Pass History</center></h1>
+            <br></br>
+            <table style={{width: '100%',border:'5px solid black',padding:"12px"}}>
+                <tbody>
                   <tr>
                     <th>S.No</th>
                     <th>Student ID</th>
@@ -87,8 +88,9 @@ class Facpass extends Component {
                     <th>Proof Link</th>
                     <th>Approve/Cancel</th>
                   </tr>
+                  <br></br>
                 {this.state.listUI !== [] ? this.state.listUI.map((element,index)=>{
-                     return ( <tr>
+                     return ( <Fragment><tr>
                       <td>{this.state.count++}</td>
                       <td>{element.sid}</td>
                       <td>{element.sn}</td>
@@ -134,7 +136,7 @@ class Facpass extends Component {
             
             {this.state.status[index]}
           </button></td>
-                  </tr>) } ) 
+                  </tr><br></br></Fragment>) } ) 
                   : "null"}
                 </tbody></table>
             </div>

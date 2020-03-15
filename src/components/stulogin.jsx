@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './stulogincss.css';
+import image from './amrita_round_2019.jpg'
 
 class Stulogin extends Component {
   state = { uid: "", pwd: "",status:"",error:{val:false,msg:""}};
@@ -88,9 +89,9 @@ class Stulogin extends Component {
           <div className="limiter">
             <div className="container-login100" style={{backgroundImage: 'url("https://static.toiimg.com/photo/60387019/.jpg")'}}>
               <div style={{background: 'transparent', float: 'left'}}>
+              <img src={image} alt="Amrita Vishwa Vidyapeetham"/>
                 <span style={{color: 'black', fontWeight: 900, fontSize: '100px', paddingRight: '150px'}}><br />
-                  <span style={{color: 'black', fontWeight: 900, fontSize: '100px', paddingRight: '150px'}}>LOGIN
-                  </span></span></div>
+                  </span></div>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <div className="wrap-login100">
                 <form className="login100-form validate-form" id='custrm'>

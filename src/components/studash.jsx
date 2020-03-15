@@ -65,7 +65,7 @@ class Studash extends Component {
             <li><a href="/applypass">Apply Pass</a></li>
             <li><a href="/passhist">View Pass History</a></li>
             <li><a href="/studachi">View Achievement</a></li>
-            <li style={{float: 'right'}}><a><button onClick={this.handleSignout} className="exit">Signout</button></a></li>
+            <li style={{float: 'right'}}><a className="exit"><button onClick={this.handleSignout} className="exit"><span style={{color:'white'}} >Signout</span></button></a></li>
           </ul>
           <div>
             <center><h1>{this.state.stu_name} {this.state.stu_id} </h1></center>

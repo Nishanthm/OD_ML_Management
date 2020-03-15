@@ -40,8 +40,22 @@ class Facdash extends Component {
   };
   
   componentDidMount=()=>{
-    this.info()
+    if(sessionStorage.getItem('uname')!=null)
+      this.info() 
+      else
+      {
+        alert("You need to login first")
+        window.history.pushState(null, "home", "/");
+        window.location.reload();
+      }
   }
+
+  handleSignout = ()=>{
+    sessionStorage.clear()
+    window.history.pushState(null, "home", "/");
+    window.location.reload();
+
+   }
 
 
 	render() {
@@ -51,9 +65,8 @@ class Facdash extends Component {
         <ul>
           <li><a href="">Dashboard</a></li>
           <li><a href="/facpass">Pass History</a></li>
-          <li><a href="#news">Update Account</a></li>
           <li><a href="/achi">View Student Achievements</a></li>
-          <li style={{float: 'right'}}><a href="#news" className="exit">Signout</a></li>
+          <li style={{float: 'right'}}><a className="exit"><button onClick={this.handleSignout} className="exit"><span style={{color:'white'}} >Signout</span></button></a></li>
         </ul>
         <div className="personal_info">
           <table style={{width: '100%'}}>
