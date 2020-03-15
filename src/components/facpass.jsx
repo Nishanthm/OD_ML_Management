@@ -9,10 +9,26 @@ class Facpass extends Component {
           return element
           })
           var a = new Array(listUI.length);
-          for (var i = 0; i < a.length; ++i) { a[i] = true; }
+          for(var i = 0; i<this.state.passList.length; i++)
+          {
+            console.log(this.state.passList[i])
+            if(this.state.passList[i].sps === "0")
+            {
+              a[i] = false;
+            }
+            else
+            {
+              a[i] = true;
+            }
+          }
+          // for (var j = 0; j < a.length; ++j) { a[j] = true; }
 
           var statustemp = new Array(listUI.length);
-          for (i = 0; i < a.length; ++i) { statustemp[i] = 'APPROVE'; }
+          for (i = 0; i < a.length; ++i) {
+            if(a[i] === true)
+             statustemp[i] = 'CANCEL'; 
+            else
+          statustemp[i] = 'APPROVE';}
 
           console.log(listUI)
           this.setState(()=>{
@@ -89,7 +105,7 @@ class Facpass extends Component {
                           let temp = [...this.state.isToggleOn]
                           temp[index] = !temp[index]
                            return {isToggleOn: [...temp]}
-            },()=>{
+                            },()=>{
                 this.setState(()=>{
                     let temp = [...this.state.status]
                         temp[index] = this.state.isToggleOn[index] === true ? 'APPROVE' : 'CANCEL'
