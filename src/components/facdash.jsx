@@ -52,6 +52,7 @@ class Facdash extends Component {
           <li><a href="">Dashboard</a></li>
           <li><a href="/facpass">Pass History</a></li>
           <li><a href="#news">Update Account</a></li>
+          <li><a href="/achi">View Student Achievements</a></li>
           <li style={{float: 'right'}}><a href="#news" className="exit">Signout</a></li>
         </ul>
         <div className="personal_info">

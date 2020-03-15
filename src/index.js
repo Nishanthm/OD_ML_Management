@@ -13,6 +13,7 @@ import Applypass from './components/applypass.jsx';
 import Passhist from './components/passhist.jsx';
 import Facpass from './components/facpass.jsx';
 import './login.css';
+import achi from './components/achi';
 //import Requestroombooking from './components/requestroombooking.jsx';
 
 ReactDOM.render(
@@ -27,6 +28,7 @@ ReactDOM.render(
 				<Route exact path="/studachi" component={studachi} />
 				<Route exact path="/passhist" component={Passhist} />
 				<Route exact path="/facpass" component={Facpass} />
+				<Route exact path="/achi" component={achi} />
 				<Route component={App} />
 			</Switch>
 		</Router>

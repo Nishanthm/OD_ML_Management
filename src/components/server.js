@@ -184,6 +184,19 @@ app.post("/passhistory", function(req, res) {
 			});
 		});
 
+		app.post("/achi", function(req, res) {
+			console.log("hi");
+			
+			mysqlConnection.query(
+				'select achid as aid,studid as sid,studname as sname,achtype as atyp,achdesc as adesc,link as alink,achdate as adate from achievement ',
+				
+				function(err, result, fields) {
+					console.log(result);
+					res.send(result);
+					res.end();
+				});
+			});
+
 
 app.post("/facpasshistory", function(req, res) {
 	console.log("hi");
