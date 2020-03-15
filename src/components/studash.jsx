@@ -4,6 +4,8 @@ class Studash extends Component {
   state = { stu_name: "", stu_id: "", gender:"",email:"",dob:"",
             mobile:"",addr:"",school:"",percent:"",branch:"",sec:"",cur_sem:"",cgpa:""};
   
+
+
   info = () => {
     
     var value=this;
@@ -35,8 +37,24 @@ class Studash extends Component {
   };
 
   componentDidMount=()=>{
-    this.info() 
+    if(sessionStorage.getItem('uname')!=null)
+      this.info() 
+      else
+      {
+        alert("You need to login first")
+        window.history.pushState(null, "home", "/");
+        window.location.reload();
+      }
   } 
+
+
+  handleSignout = ()=>{
+   sessionStorage.clear()
+   window.history.pushState(null, "home", "/");
+   window.location.reload();
+ 
+  }
+
 
 	render() {
 		return (
@@ -47,8 +65,7 @@ class Studash extends Component {
             <li><a href="/applypass">Apply Pass</a></li>
             <li><a href="/passhist">View Pass History</a></li>
             <li><a href="/studachi">View Achievement</a></li>
-            <li><a href="#news">Update Account</a></li>
-            <li style={{float: 'right'}}><a href="#news" className="exit">Signout</a></li>
+            <li style={{float: 'right'}}><a><button onClick={this.handleSignout} className="exit">Signout</button></a></li>
           </ul>
           <div>
             <center><h1>{this.state.stu_name} {this.state.stu_id} </h1></center>

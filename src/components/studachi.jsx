@@ -29,7 +29,7 @@ class studachi extends Component {
                   <td>{value.state.count++}</td>
                   <td>{element.sid}</td>
                   <td>{element.sname}</td>
-                  <td>{element.atype}</td>
+                  <td>{element.atyp}</td>
                   <td>{element.adesc}</td>
                   <td>{element.alink}</td>
                   <td>{element.adate}</td>
