@@ -38,21 +38,22 @@ app.post("/login", cors(), (req, res) => {
                     // req.session.loggedin = true;
 					// req.session.uname = uname;
 					//var status='success';
-					console.log("hi");
+					console.log("hi1");
 					console.log(results[0].su);
 					res.send(results);
-					
+					res.end();
                     //res.redirect('http://localhost:3000/studash');
                     // res.end();
                 } else {
 					//status='fail';
 					
 					mysqlConnection.query('select "fail" as su from dual',function (error, results, fields) {
-						console.log("hi");
+						console.log("hi2");
 						console.log(results[0].su);
 						res.send(results);
+						res.end();
 					});
-                    res.end();
+                   
                 }			
             });
         }
@@ -60,14 +61,14 @@ app.post("/login", cors(), (req, res) => {
         {
 			mysqlConnection.query('SELECT facusername as su FROM faclogin WHERE facusername = ? AND AES_DECRYPT(facpswd, "software") = ?',
 			 [uname, pwd],
-			  function(error, results, fields) {
+			  function(error, tresults, fields) {
                 
-                if (results.length > 0) {
+                if (tresults.length > 0) {
                     // req.session.loggedin = true;
 					// req.session.uname = uname;
 					//var status='success';
-					console.log(results[0].su)
-					res.send(results);
+					console.log(tresults[0].su)
+					res.send(tresults);
 					//res.redirect('http://localhost:3000/facdash');
 					//res.send(status+uname)
 					//console.log(status+uname)
@@ -76,19 +77,23 @@ app.post("/login", cors(), (req, res) => {
 					//status='fail'
 					//res.send(status+uname)
 					//res.send('Incorrect Username and/or Password!');
-					//console.log(status+uname)
+					// console.log("Fail")
 					mysqlConnection.query('select "fail" as su from dual',function (error, results, fields) {
+						console.log(results)
 						res.send(results);
+						res.end()
 					});
-                    res.end()
+                  
                 }			
             });
         }
         else {
             mysqlConnection.query('select "fail" as su from dual',function (error, results, fields) {
+				console.log("GERE")
 				res.send(results[0].su);
+			
+				res.end();
 			});
-            res.end();
         }
     }
 
