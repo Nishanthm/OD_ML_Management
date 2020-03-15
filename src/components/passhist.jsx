@@ -27,6 +27,7 @@ class Passhist extends Component {
           return (
               <tr>
                   <td>{value.state.count++}</td>
+                  <td>{parseInt(element.sps)  ? 'ACCEPTED' : 'PENDING'}</td>
                   <td>{element.sid}</td>
                   <td>{element.sn}</td>
                   <td>{element.stype}</td>
@@ -62,6 +63,7 @@ class Passhist extends Component {
                   </tr>
                   <tr>
                     <th>S.No</th>
+                    <th>Pass Status</th>
                     <th>Student ID</th>
                     <th>Student Name</th>
                     <th>Pass Type</th>

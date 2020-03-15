@@ -16,8 +16,8 @@ var transport = nodemailer.createTransport({
 	  pass: "3573621c27a984"
 	}
   });
-var htmlpass='<h1>You Pass has been accepted!</h1><p>Happy journey!!</p>';
-var htmlfail='<h1>You Pass has been cancelled!</h1><p>contact class advisor!!</p>';
+var htmlpass='<h1>Your Pass has been accepted!</h1><p>Happy journey!!</p>';
+var htmlfail='<h1>Your Pass has been cancelled!</h1><p>contact class advisor!!</p>';
   var message = {
     from: 'elonmusk@tesla.com', // Sender address
     to: 'to@email.com',         // List of recipients
