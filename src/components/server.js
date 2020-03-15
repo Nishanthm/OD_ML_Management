@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 var mysqlConnection = mysql.createConnection({
-	host: 'software.cbesvpot2wyw.us-east-1.rds.amazonaws.com',
+	host: 'schema.cbesvpot2wyw.us-east-1.rds.amazonaws.com',
 	user: 'admin',
 	password: 'password',
 	database: 'software'
