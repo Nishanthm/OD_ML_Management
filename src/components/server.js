@@ -25,10 +25,6 @@ var htmlfail='<h1>Your Pass has been cancelled!</h1><p>contact class advisor!!</
     html: '<h1>You Pass has been accepted!</h1><p>Happy journey!!</p>'
 };
 
-
-
-
-
 const mysql = require('mysql');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -61,17 +57,12 @@ app.post("/login", async (req, res) => {
             mysqlConnection.query('SELECT studusername as su FROM studlogin WHERE studusername = ? AND AES_DECRYPT(STUDPSWD,"software") = ?', [uname, pwd], function(error, results, fields) {
                 console.log(results);
                 if (results.length > 0) {
-                    // req.session.loggedin = true;
-					// req.session.uname = uname;
-					//var status='success';
 					console.log("hi1");
 					console.log(results[0].su);
 					res.send(results);
 					res.end();
-                    //res.redirect('http://localhost:3000/studash');
-                    // res.end();
+                    
                 } else {
-					//status='fail';
 					
 					mysqlConnection.query('select "fail" as su from dual',function (error, results, fields) {
 						console.log("hi2");

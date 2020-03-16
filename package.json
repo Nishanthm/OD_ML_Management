@@ -22,10 +22,17 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test ./src/components/achienz.test.js",
+    "test": "concurrently \"npm run atest\" \"npm run test1\" \"npm run test2\" \"npm run test3\" \"npm run test4\" \"npm run test5\" ",
+    "atest":"react-scripts test ./src/components/achienz.test.js",
+    "test1":"react-scripts test ./src/components/test1.test.js",
+    "test2":"react-scripts test ./src/components/test2.test.js",
+    "test3":"react-scripts test ./src/components/test3.test.js",
+    "test4":"react-scripts test ./src/components/test4.test.js",
+    "test5":"react-scripts test ./src/components/test5.test.js",
+
     "eject": "react-scripts eject",
     "coverage": "react-scripts test --coverage --env=jsdom --watchAll",
-    "server":"nodemon ./src/components/server.js"
+    "server": "nodemon ./src/components/server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,6 +51,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^9.4.0",
+    "concurrently": "^5.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "jest-dom": "^4.0.0",

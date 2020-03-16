@@ -16,13 +16,7 @@ class Stulogin extends Component {
       value.setState({error:{val:true,msg:"Enter Something!"}}) 
       
     }
-    // var formdata= new FormData(document.getElementById("custrm"));
-    // var data= new URLSearchParams();
-    // for (var pair of formdata) {
-    //   data.append(pair[0], pair[1])
-    // }
     
-    // console.log(this.state)
     fetch('http://localhost:8000/login', {
       method: 'post',
       headers:{'Content-Type':'application/json'},
