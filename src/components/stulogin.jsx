@@ -10,7 +10,7 @@ class Stulogin extends Component {
     
     var value=this;
 
-    if(this.state.uname==''||this.state.pwd=='')
+    if(this.state.uname===''||this.state.pwd==='')
     {
       alert('Enter something!')
       value.setState({error:{val:true,msg:"Enter Something!"}}) 

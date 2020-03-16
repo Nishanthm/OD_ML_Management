@@ -44,7 +44,7 @@ class Facdash extends Component {
       this.info() 
       else
       {
-        alert("You need to login first")
+        //alert("You need to login first")
         window.history.pushState(null, "home", "/");
         window.location.reload();
       }

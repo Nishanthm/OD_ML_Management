@@ -76,7 +76,7 @@ app.post("/login", async (req, res) => {
 					mysqlConnection.query('select "fail" as su from dual',function (error, results, fields) {
 						console.log("hi2");
 						console.log(results[0].su);
-						res.JSON({msg:"Fail"});
+						res.send(results);
 						res.end();
 					});
                    
@@ -116,8 +116,7 @@ app.post("/login", async (req, res) => {
         else {
             mysqlConnection.query('select "fail" as su from dual',function (error, results, fields) {
 				console.log("GERE")
-				res.send(results[0].su);
-			
+				res.send(results);
 				res.end();
 			});
         }
